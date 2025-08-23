@@ -17031,10 +17031,12 @@ span.select2-selection.select2-selection--single:focus {
 
 .products_deatils tr:nth-child(odd) td {
   background-color: #eaf6fe;
+  text-transform: uppercase;
 }
 
 .products_deatils tr:nth-child(even) td {
   background-color: var(--white-color);
+  text-transform: uppercase;
 }
 
 /* MOBILE - 1 column per row */
@@ -17045,6 +17047,7 @@ span.select2-selection.select2-selection--single:focus {
   .products_deatils tr {
     display: block;
     width: 100%;
+    text-transform: uppercase;
   }
 
   /* Make header span full width */
