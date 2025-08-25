@@ -12567,7 +12567,7 @@ span.select2-selection.select2-selection--single:focus {
 }
 
 .team-card .box-img {
-  border-radius: 20px;
+  border: 1px solid gray;
   margin-bottom: 30px;
 }
 
