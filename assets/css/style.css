@@ -1874,6 +1874,62 @@ textarea.is-invalid {
   width: 45px;
 }
 
+.wa-btn {
+  position: fixed;
+  right: 30px;
+  bottom: 140px;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  display: block;
+  border-radius: 50px;
+  z-index: 10000;
+  opacity: 1;
+  /* visibility: hidden; */
+  -webkit-transform: translateY(45px);
+  -ms-transform: translateY(45px);
+  transform: translateY(45px);
+  -webkit-transition: all 300ms linear;
+  transition: all 300ms linear;
+}
+
+.wa-btn:after {
+  font-family: var(--icon-font);
+  position: absolute;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  color: var(--theme-color);
+  left: 0;
+  top: 0;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  display: block;
+  z-index: 1;
+  border: 2px solid var(--theme-color);
+  box-shadow: none;
+  border-radius: 50%;
+}
+
+.wa-btn svg {
+  color: var(--theme-color);
+  border-radius: 50%;
+  background: var(--white-color);
+}
+
+.wa-btn svg path {
+  fill: none;
+}
+
+.wa-btn.show {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+
 .scroll-top {
   position: fixed;
   right: 30px;
