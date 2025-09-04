@@ -28,28 +28,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    $admin_email = "khushitejani9624@gmail.com";
-
     // Create PHPMailer instance
     $mail = new PHPMailer(true);
 
     try {
         // SMTP setup
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
+        $mail->Host       = 'smtp.hostinger.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'khushitejani9624@gmail.com';
-        $mail->Password   = 'jxbq myju ynsm rwlv'; // Gmail App Password
+        $mail->Username   = 'sales@raghuveer-chemicals.com';
+        $mail->Password   = 'Raghuveer@Sales09'; // Gmail App Password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
         // Send to admin
-        $mail->setFrom('khushitejani9624@gmail.com', 'Website Inquiry Form');
-        $mail->addReplyTo($email, $first_name . ' ' . $last_name);
-        $mail->addAddress($admin_email);
+        $mail->setFrom('sales@raghuveer-chemicals.com', 'Website Contact Form');
+        $mail->addAddress('sales@raghuveer-chemicals.com'); // send to yourself
+        $mail->addReplyTo($email, $name);
 
         $mail->isHTML(true);
-        $mail->Subject = "📩 New Inquiry from Website";
+        $mail->Subject = "Inquiry in Raghuveer Chemicals from {$company_name}";
         $mail->Body = "
             <h2>New Inquiry Details</h2>
             <p><strong>Company Name:</strong> {$company_name}</p>
@@ -65,17 +63,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <p><strong>Products Interested:</strong> {$products}</p>
             <p><strong>Message:</strong><br>{$message}</p>
         ";
+        $mail->AltBody = "Name: {$name}\nEmail: {$email}\nMessage:\n{$message}";
 
         $mail->send();
 
         // Send confirmation to user
-        $mail->clearAddresses();
-        $mail->addAddress($email);
-        $mail->Subject = "✅ Thank you for contacting us";
-        $mail->Body = "
-            <h2>Hello {$first_name},</h2>
-            <p>Thank you for reaching out. We have received your inquiry and will get back to you shortly.</p>
-        ";
+        // $mail->clearAddresses();
+        // $mail->addAddress($email);
+        // $mail->Subject = "✅ Thank you for contacting us";
+        // $mail->Body = "
+        //     <h2>Hello {$first_name},</h2>
+        //     <p>Thank you for reaching out. We have received your inquiry and will get back to you shortly.</p>
+        // ";
 
         $mail->send();
 
@@ -83,6 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             "status"  => "success",
             "message" => "Your inquiry has been sent successfully."
         ]);
+        
     } catch (Exception $e) {
         echo json_encode([
             "status"  => "error",
