@@ -39,14 +39,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->isSMTP();
         $mail->Host       = 'smtp.hostinger.com'; // or mail.raghuveer-chemicals.com
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'sales@raghuveer-chemicals.com'; // your Hostinger email
-        $mail->Password   = 'Raghuveer@Sales09'; // replace with the real password
+        $mail->Username   = 'info@raghuveer-chemicals.com'; // your Hostinger email
+        $mail->Password   = 'Raghuveer@Info09'; // replace with the real password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // use ENCRYPTION_SMTPS if using port 465
         $mail->Port       = 587;
 
         // Sender & recipient
-        $mail->setFrom('sales@raghuveer-chemicals.com', 'Website Contact Form');
-        $mail->addAddress('sales@raghuveer-chemicals.com'); // send to yourself
+        $mail->setFrom('info@raghuveer-chemicals.com', 'Website Contact Form');
+        $mail->addAddress('info@raghuveer-chemicals.com'); // send to yourself
         $mail->addReplyTo($email, $name);
 
         // Email content

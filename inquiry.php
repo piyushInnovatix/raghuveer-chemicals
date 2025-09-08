@@ -36,14 +36,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->isSMTP();
         $mail->Host       = 'smtp.hostinger.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'sales@raghuveer-chemicals.com';
-        $mail->Password   = 'Raghuveer@Sales09'; // Gmail App Password
+        $mail->Username   = 'info@raghuveer-chemicals.com';
+        $mail->Password   = 'Raghuveer@Info09'; // Gmail App Password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
         // Send to admin
-        $mail->setFrom('sales@raghuveer-chemicals.com', 'Website Contact Form');
-        $mail->addAddress('sales@raghuveer-chemicals.com'); // send to yourself
+        $mail->setFrom('info@raghuveer-chemicals.com', 'Website Contact Form');
+        $mail->addAddress('info@raghuveer-chemicals.com'); // send to yourself
         $mail->addReplyTo($email, $name);
 
         $mail->isHTML(true);
@@ -51,10 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->Body = "
             <h2>New Inquiry Details</h2>
             <p><strong>Company Name:</strong> {$company_name}</p>
-            <p><strong>Password:</strong> {$password}</p>
+            <p><strong>Name:</strong> {$first_name} + {$last_name}</p>
             <p><strong>Designation:</strong> {$designation}</p>
-            <p><strong>First Name:</strong> {$first_name}</p>
-            <p><strong>Last Name:</strong> {$last_name}</p>
             <p><strong>Email:</strong> {$email}</p>
             <p><strong>Contact Number:</strong> {$contact_number}</p>
             <p><strong>City:</strong> {$city}</p>
@@ -64,8 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <p><strong>Message:</strong><br>{$message}</p>
         ";
         $mail->AltBody = "Name: {$name}\nEmail: {$email}\nMessage:\n{$message}";
-
-        $mail->send();
 
         // Send confirmation to user
         // $mail->clearAddresses();
